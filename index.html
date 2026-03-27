@@ -506,50 +506,118 @@
     }
 
     /* Kanban Board */
+    .kanban-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .kanban-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 16px;
+      flex: 1;
+      max-width: 300px;
+    }
+    
+    .kanban-search input {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+    }
+    
+    .kanban-search input::placeholder { color: var(--text-muted); }
+    
     .kanban-board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      min-height: 400px;
+      min-height: 500px;
     }
 
     .kanban-column {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 280px);
     }
+    
+    .kanban-column.today { border-top: 3px solid var(--primary); }
+    .kanban-column.week { border-top: 3px solid var(--info); }
+    .kanban-column.later { border-top: 3px solid var(--accent); }
 
-    .kanban-header {
+    .kanban-column-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
-    .kanban-title {
-      font-weight: 600;
+    .kanban-column-title {
+      font-weight: 700;
+      font-size: 14px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
+    
+    .kanban-column-title .emoji {
+      font-size: 18px;
+    }
 
-    .kanban-count {
+    .kanban-column-count {
       background: var(--primary-dim);
       color: var(--primary);
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
       font-weight: 600;
+    }
+    
+    .kanban-add-btn {
+      background: transparent;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+      width: 100%;
+      margin: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .kanban-add-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-dim);
     }
 
     .kanban-cards {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-height: 200px;
     }
 
     .kanban-card {
@@ -557,33 +625,210 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 14px;
-      cursor: grab;
+      cursor: pointer;
       transition: all 0.2s;
+      position: relative;
     }
 
     .kanban-card:hover {
       border-color: var(--primary);
-      transform: translateX(4px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+    
+    .kanban-card.dragging {
+      opacity: 0.5;
+      transform: rotate(3deg);
+    }
+    
+    .kanban-card-priority {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    
+    .kanban-card-priority.high { background: var(--danger); }
+    .kanban-card-priority.medium { background: var(--warning); }
+    .kanban-card-priority.low { background: var(--primary); }
 
     .kanban-card-title {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      padding-right: 16px;
+    }
+    
+    .kanban-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .kanban-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
     .kanban-card-labels {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
+      margin-bottom: 8px;
     }
 
     .kanban-label {
       font-size: 10px;
-      padding: 2px 8px;
+      padding: 3px 8px;
       border-radius: 4px;
-      background: var(--accent-dim);
-      color: var(--accent);
+      font-weight: 500;
+    }
+    
+    .kanban-label.priority-high { background: rgba(239,68,68,0.15); color: var(--danger); }
+    .kanban-label.priority-medium { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .kanban-label.priority-low { background: var(--primary-dim); color: var(--primary); }
+    .kanban-label.bug { background: rgba(239,68,68,0.15); color: var(--danger); }
+    .kanban-label.feature { background: rgba(139,92,246,0.15); color: var(--accent); }
+    .kanban-label.enhancement { background: rgba(59,130,246,0.15); color: var(--info); }
+    .kanban-label.docs { background: rgba(16,185,129,0.15); color: var(--primary); }
+    
+    .kanban-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    
+    .kanban-empty-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+      opacity: 0.5;
+    }
+
+    /* Task Detail Modal */
+    .task-detail {
+      max-width: 600px;
+    }
+    
+    .task-detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .task-detail-title {
+      font-size: 20px;
+      font-weight: 700;
+      flex: 1;
+    }
+    
+    .task-detail-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .task-detail-actions button {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+    
+    .task-detail-actions button:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+    
+    .task-detail-actions button.delete:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+    
+    .task-detail-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .task-meta-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+    }
+    
+    .task-meta-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    
+    .task-meta-value {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .task-detail-desc {
+      margin-bottom: 20px;
+    }
+    
+    .task-detail-desc textarea {
+      width: 100%;
+      min-height: 100px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+    }
+    
+    .task-detail-desc textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .task-detail-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .task-label-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    
+    .task-label-chip:hover { opacity: 0.8; }
+    .task-label-chip.selected { border-color: currentColor; }
+    
+    .task-detail-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
 
     /* Tools Grid */
@@ -998,6 +1243,10 @@
             <h1>Kanban Board</h1>
           </div>
           <div class="header-actions">
+            <div class="kanban-search">
+              <span>🔍</span>
+              <input type="text" id="kanban-search" placeholder="Search tasks..." oninput="searchTasks(this.value)">
+            </div>
             <button class="btn" onclick="openLink('https://trello.com')">Open Trello</button>
           </div>
         </div>
@@ -1214,25 +1463,65 @@
   </div>
 
   <!-- Modals -->
-  <div id="modal-add-task" class="modal-overlay">
+  <div id="modal-add-task" class="modal-overlay" onclick="if(event.target===this)closeModal('add-task')">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Add Task</div>
+        <div class="modal-title">New Task</div>
         <button class="modal-close" onclick="closeModal('add-task')">×</button>
       </div>
       <div class="form-group">
         <label class="form-label">Task Title</label>
-        <input type="text" id="task-title" class="form-input" placeholder="Enter task title">
+        <input type="text" id="task-title" class="form-input" placeholder="What needs to be done?">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea id="task-desc" class="form-input" placeholder="Add more details..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Priority</label>
+        <div style="display: flex; gap: 8px;">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="radio" name="task-priority" value="high" id="priority-high">
+            <span style="color: var(--danger);">🔴 High</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="radio" name="task-priority" value="medium" id="priority-medium" checked>
+            <span style="color: var(--warning);">🟡 Medium</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="radio" name="task-priority" value="low" id="priority-low">
+            <span style="color: var(--primary);">🟢 Low</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Labels</label>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <label style="cursor: pointer;"><input type="checkbox" name="task-label" value="feature"> <span class="kanban-label feature">feature</span></label>
+          <label style="cursor: pointer;"><input type="checkbox" name="task-label" value="bug"> <span class="kanban-label bug">bug</span></label>
+          <label style="cursor: pointer;"><input type="checkbox" name="task-label" value="enhancement"> <span class="kanban-label enhancement">enhancement</span></label>
+          <label style="cursor: pointer;"><input type="checkbox" name="task-label" value="docs"> <span class="kanban-label docs">docs</span></label>
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label">Column</label>
         <select id="task-column" class="form-input">
-          <option value="today">Today</option>
-          <option value="week">This Week</option>
-          <option value="later">Later</option>
+          <option value="today">📌 Today</option>
+          <option value="week">📅 This Week</option>
+          <option value="later">🚀 Later</option>
         </select>
       </div>
-      <button class="btn btn-primary" onclick="addTask()" style="width: 100%;">Add Task</button>
+      <button class="btn btn-primary" onclick="addTask()" style="width: 100%;">Create Task</button>
+    </div>
+  </div>
+
+  <div id="modal-task-detail" class="modal-overlay" onclick="if(event.target===this)closeModal('task-detail')">
+    <div class="modal task-detail">
+      <div class="modal-header">
+        <div class="modal-title">Task Details</div>
+        <button class="modal-close" onclick="closeModal('task-detail')">×</button>
+      </div>
+      <div id="task-detail-content"></div>
     </div>
   </div>
 
@@ -1350,41 +1639,233 @@
     }
 
     // ── Kanban ─────────────────────────────────────────────────────────────
+    const KANBAN_COLUMNS = {
+      today: { title: 'Today', emoji: '📌', class: 'today' },
+      week: { title: 'This Week', emoji: '📅', class: 'week' },
+      later: { title: 'Later', emoji: '🚀', class: 'later' }
+    };
+
+    let currentSearch = '';
+
     function renderKanban() {
       const board = document.getElementById('kanban-board');
       const data = JSON.parse(localStorage.getItem('mc_kanban') || '{"today":[],"week":[],"later":[]}');
       
-      board.innerHTML = ['today', 'week', 'later'].map(col => `
-        <div class="kanban-column">
-          <div class="kanban-header">
-            <div class="kanban-title">${col === 'today' ? '📌 Today' : col === 'week' ? '📅 This Week' : '🚀 Later'}</div>
-            <span class="kanban-count">${data[col]?.length || 0}</span>
-          </div>
-          <div class="kanban-cards">
-            ${(data[col] || []).map(card => `
-              <div class="kanban-card">
-                <div class="kanban-card-title">${card.title}</div>
-                ${card.labels?.length ? `<div class="kanban-card-labels">${card.labels.map(l => `<span class="kanban-label">${l}</span>`).join('')}</div>` : ''}
+      board.innerHTML = Object.entries(KANBAN_COLUMNS).map(([colKey, col]) => {
+        const cards = (data[colKey] || []).filter(card => 
+          currentSearch === '' || 
+          card.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          (card.desc && card.desc.toLowerCase().includes(currentSearch.toLowerCase()))
+        );
+        
+        return `
+          <div class="kanban-column ${col.class}">
+            <div class="kanban-column-header">
+              <div class="kanban-column-title">
+                <span class="emoji">${col.emoji}</span>
+                ${col.title}
               </div>
-            `).join('')}
+              <span class="kanban-column-count">${cards.length}</span>
+            </div>
+            <button class="kanban-add-btn" onclick="openAddTaskInColumn('${colKey}')">
+              + Add task
+            </button>
+            <div class="kanban-cards" ondragover="handleDragOver(event)" ondrop="handleDrop(event, '${colKey}')">
+              ${cards.length === 0 ? `
+                <div class="kanban-empty">
+                  <div class="kanban-empty-icon">📭</div>
+                  No tasks yet
+                </div>
+              ` : cards.map((card, idx) => `
+                <div class="kanban-card" 
+                     draggable="true" 
+                     ondragstart="handleDragStart(event, '${colKey}', ${idx})"
+                     ondragend="handleDragEnd(event)"
+                     onclick="showTaskDetail('${colKey}', ${idx})"
+                     data-priority="${card.priority || 'medium'}">
+                  ${card.priority ? `<div class="kanban-card-priority ${card.priority}"></div>` : ''}
+                  <div class="kanban-card-title">${card.title}</div>
+                  ${card.desc ? `<div class="kanban-card-desc">${card.desc.substring(0, 60)}${card.desc.length > 60 ? '...' : ''}</div>` : ''}
+                  ${card.labels?.length ? `
+                    <div class="kanban-card-labels">
+                      ${card.labels.map(l => `<span class="kanban-label ${l}">${l}</span>`).join('')}
+                    </div>
+                  ` : ''}
+                  <div class="kanban-card-meta">
+                    <span>${card.created || 'Today'}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
+      
+      updateStats();
+    }
+
+    function openAddTaskInColumn(col) {
+      document.getElementById('task-column').value = col;
+      showModal('add-task');
     }
 
     function addTask() {
-      const title = document.getElementById('task-title').value;
+      const title = document.getElementById('task-title').value.trim();
+      const desc = document.getElementById('task-desc').value.trim();
       const column = document.getElementById('task-column').value;
+      const priority = document.querySelector('input[name="task-priority"]:checked')?.value || 'medium';
+      const labels = Array.from(document.querySelectorAll('input[name="task-label"]:checked')).map(cb => cb.value);
+      
       if (!title) return;
       
       const data = JSON.parse(localStorage.getItem('mc_kanban') || '{"today":[],"week":[],"later":[]}');
-      data[column].push({ title, labels: [] });
+      data[column].push({
+        title,
+        desc,
+        priority,
+        labels,
+        created: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+      });
       localStorage.setItem('mc_kanban', JSON.stringify(data));
       
       renderKanban();
-      updateStats();
       closeModal('add-task');
+      
+      // Reset form
       document.getElementById('task-title').value = '';
+      document.getElementById('task-desc').value = '';
+      document.querySelectorAll('input[name="task-label"]').forEach(cb => cb.checked = false);
+    }
+
+    function showTaskDetail(col, idx) {
+      const data = JSON.parse(localStorage.getItem('mc_kanban') || '{"today":[],"week":[],"later":[]}');
+      const task = data[col][idx];
+      if (!task) return;
+      
+      const content = document.getElementById('task-detail-content');
+      content.innerHTML = `
+        <div class="task-detail-header">
+          <div class="task-detail-title">${task.title}</div>
+          <div class="task-detail-actions">
+            <button onclick="moveTask('${col}', ${idx}, '${col === 'today' ? 'week' : col === 'week' ? 'later' : 'today'}')">→ Move</button>
+            <button class="delete" onclick="deleteTask('${col}', ${idx})">🗑️ Delete</button>
+          </div>
+        </div>
+        
+        <div class="task-detail-meta">
+          <div class="task-meta-item">
+            <div class="task-meta-label">Priority</div>
+            <div class="task-meta-value" style="color: var(--${task.priority === 'high' ? 'danger' : task.priority === 'medium' ? 'warning' : 'primary'})">
+              ${task.priority === 'high' ? '🔴 High' : task.priority === 'medium' ? '🟡 Medium' : '🟢 Low'}
+            </div>
+          </div>
+          <div class="task-meta-item">
+            <div class="task-meta-label">Column</div>
+            <div class="task-meta-value">${KANBAN_COLUMNS[col].emoji} ${KANBAN_COLUMNS[col].title}</div>
+          </div>
+        </div>
+        
+        <div class="task-detail-desc">
+          <div class="task-meta-label">Description</div>
+          <textarea id="task-detail-desc-input" placeholder="Add a description...">${task.desc || ''}</textarea>
+        </div>
+        
+        <div class="task-detail-labels">
+          <div class="task-meta-label">Labels</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+            ${['feature', 'bug', 'enhancement', 'docs'].map(label => `
+              <span class="task-label-chip kanban-label ${label} ${task.labels?.includes(label) ? 'selected' : ''}" 
+                    onclick="toggleTaskLabel('${col}', ${idx}, '${label}')">${label}</span>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div class="task-detail-footer">
+          <button class="btn" onclick="closeModal('task-detail')">Close</button>
+          <button class="btn btn-primary" onclick="saveTaskDetail('${col}', ${idx})">Save Changes</button>
+        </div>
+      `;
+      
+      showModal('task-detail');
+    }
+
+    function saveTaskDetail(col, idx) {
+      const desc = document.getElementById('task-detail-desc-input').value;
+      const data = JSON.parse(localStorage.getItem('mc_kanban'));
+      data[col][idx].desc = desc;
+      localStorage.setItem('mc_kanban', JSON.stringify(data));
+      closeModal('task-detail');
+      renderKanban();
+    }
+
+    function toggleTaskLabel(col, idx, label) {
+      const data = JSON.parse(localStorage.getItem('mc_kanban'));
+      if (!data[col][idx].labels) data[col][idx].labels = [];
+      const idx = data[col][idx].labels.indexOf(label);
+      if (idx > -1) {
+        data[col][idx].labels.splice(idx, 1);
+      } else {
+        data[col][idx].labels.push(label);
+      }
+      localStorage.setItem('mc_kanban', JSON.stringify(data));
+      showTaskDetail(col, idx);
+    }
+
+    function moveTask(col, idx, toCol) {
+      const data = JSON.parse(localStorage.getItem('mc_kanban'));
+      const task = data[col].splice(idx, 1)[0];
+      data[toCol].push(task);
+      localStorage.setItem('mc_kanban', JSON.stringify(data));
+      closeModal('task-detail');
+      renderKanban();
+    }
+
+    function deleteTask(col, idx) {
+      if (!confirm('Delete this task?')) return;
+      const data = JSON.parse(localStorage.getItem('mc_kanban'));
+      data[col].splice(idx, 1);
+      localStorage.setItem('mc_kanban', JSON.stringify(data));
+      closeModal('task-detail');
+      renderKanban();
+    }
+
+    // ── Drag & Drop ──────────────────────────────────────────────────────
+    let draggedCard = null;
+    let draggedFromCol = null;
+    let draggedFromIdx = null;
+
+    function handleDragStart(e, col, idx) {
+      draggedCard = e.target;
+      draggedFromCol = col;
+      draggedFromIdx = idx;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragEnd(e) {
+      e.target.classList.remove('dragging');
+      draggedCard = null;
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleDrop(e, toCol) {
+      e.preventDefault();
+      if (draggedFromCol === null || draggedFromIdx === null) return;
+      
+      const data = JSON.parse(localStorage.getItem('mc_kanban'));
+      const task = data[draggedFromCol].splice(draggedFromIdx, 1)[0];
+      data[toCol].push(task);
+      localStorage.setItem('mc_kanban', JSON.stringify(data));
+      renderKanban();
+    }
+
+    function searchTasks(query) {
+      currentSearch = query;
+      renderKanban();
     }
 
     function updateStats() {
@@ -1420,6 +1901,25 @@
 
     // ── Init ────────────────────────────────────────────────────────────────
     function init() {
+      // Initialize with sample tasks if empty
+      if (!localStorage.getItem('mc_kanban')) {
+        const sampleData = {
+          today: [
+            { title: 'Review Mission Control features', desc: 'Test all sections and fix any issues', priority: 'high', labels: ['feature'], created: 'Today' },
+            { title: 'Update project links', desc: 'Ensure all project URLs are correct', priority: 'medium', labels: [], created: 'Today' }
+          ],
+          week: [
+            { title: 'Add more integrations', desc: 'Connect Stripe, Gmail, HubSpot', priority: 'medium', labels: ['enhancement'], created: 'Mon' },
+            { title: 'Write documentation', desc: 'Document all features', priority: 'low', labels: ['docs'], created: 'Tue' }
+          ],
+          later: [
+            { title: 'Mobile responsive design', desc: 'Make it work on phones', priority: 'low', labels: ['enhancement'], created: 'TBD' },
+            { title: 'Dark mode toggle', desc: 'Add light/dark theme switcher', priority: 'low', labels: ['feature'], created: 'TBD' }
+          ]
+        };
+        localStorage.setItem('mc_kanban', JSON.stringify(sampleData));
+      }
+      
       updateClock();
       setInterval(updateClock, 1000);
       renderStats();

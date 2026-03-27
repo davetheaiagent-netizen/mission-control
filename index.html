@@ -1556,7 +1556,9 @@
     // ── Auth ───────────────────────────────────────────────────────────────
     function unlock() {
       const input = document.getElementById('pin-input');
-      if (input.value === CONFIG.pin) {
+      const storedPin = localStorage.getItem('mc_pin');
+      const activePin = (storedPin && storedPin !== '0000') ? storedPin : '9947';
+      if (input.value === activePin) {
         document.getElementById('lock-screen').style.display = 'none';
         document.getElementById('app').style.display = 'flex';
         init();

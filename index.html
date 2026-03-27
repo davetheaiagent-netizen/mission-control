@@ -1255,7 +1255,7 @@
         const email = result.user.email;
         
         // Allowlist check
-        const allowedEmails = ['markmcainsh@gmail.com', 'davetheaiagent@gmail.com'];
+        const allowedEmails = ['mark@inference-agents.com', 'dave@inference-agents.com', 'dave.agent@inference-agents.com', 'markmcainsh@gmail.com', 'davetheaiagent@gmail.com'];
         if (!allowedEmails.includes(email.toLowerCase())) {
           await auth.signOut();
           error.textContent = 'Access denied. This account is not authorized.';

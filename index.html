@@ -1764,10 +1764,20 @@
       if (!localStorage.getItem('mc_kanban')) {
         const sampleData = {
           today: [
-            { title: 'Welcome to Mission Control', desc: 'Your secure hub for projects and tasks', priority: 'high', labels: ['feature'], created: 'Today' }
+            { title: 'Add Firebase Google OAuth to Inference Agents site', desc: 'Capture user emails via sign-in. Set up authorized domain on GitHub Pages.', priority: 'high', labels: ['feature'], created: 'Today' },
+            { title: 'Define trial structure for Inference Agents', desc: '14-day trial (not 7). Add soft caps: 50 agent runs/day. No credit card required.', priority: 'high', labels: ['feature'], created: 'Today' },
+            { title: 'Design pick-and-mix agent subscription model', desc: 'Base subscription with agent swaps. Add switching costs: context memory, saved outputs.', priority: 'high', labels: ['feature'], created: 'Today' }
           ],
-          week: [],
-          later: []
+          week: [
+            { title: 'Implement Stripe integration for Inference Agents', desc: 'Set up payments. Consider hybrid model: base fee + usage tail.', priority: 'medium', labels: ['feature'], created: 'Today' },
+            { title: 'Build trial email sequence', desc: 'Day 1: Welcome + onboarding. Day 3: Value check-in. Day 7: Mid-trial nudge. Day 13: Urgency CTA.', priority: 'medium', labels: ['feature'], created: 'Today' },
+            { title: 'Add agent run tracking/limits', desc: 'Track tokens/actions per user. Implement soft caps for free tier to control GPU burn.', priority: 'medium', labels: ['enhancement'], created: 'Today' }
+          ],
+          later: [
+            { title: 'Define paid tier features', desc: 'Protect: priority support, team collaboration, API access, custom agent training.', priority: 'low', labels: ['feature'], created: 'Today' },
+            { title: 'Build onboarding flow for Inference Agents', desc: 'Get users to aha moment in <5 minutes. Show value quickly.', priority: 'medium', labels: ['feature'], created: 'Today' },
+            { title: 'Set up analytics for trial conversion', desc: 'Track time-to-activation, drop-off points, conversion metrics.', priority: 'low', labels: ['enhancement'], created: 'Today' }
+          ]
         };
         localStorage.setItem('mc_kanban', JSON.stringify(sampleData));
       }

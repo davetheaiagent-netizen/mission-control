@@ -1251,7 +1251,19 @@
         provider.addScope('email');
         provider.addScope('profile');
         
-        await auth.signInWithPopup(provider);
+        const result = await auth.signInWithPopup(provider);
+        const email = result.user.email;
+        
+        // Allowlist check
+        const allowedEmails = ['markmcainsh@gmail.com', 'davetheaiagent@gmail.com'];
+        if (!allowedEmails.includes(email.toLowerCase())) {
+          await auth.signOut();
+          error.textContent = 'Access denied. This account is not authorized.';
+          error.style.display = 'block';
+          btn.style.display = 'flex';
+          loading.style.display = 'none';
+          return;
+        }
       } catch (err) {
         console.error('Auth error:', err);
         error.textContent = err.message || 'Sign in failed. Please try again.';

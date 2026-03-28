@@ -531,71 +531,105 @@
       font-size: 20px;
     }
 
-    /* Projects Grid */
+    /* Projects */
+    .projects-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 28px 0 14px;
+    }
+    .projects-section-title:first-child { margin-top: 0; }
+
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
     }
 
     .project-card {
-      background: linear-gradient(135deg, var(--bg-card), rgba(16,185,129,0.03));
+      background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 20px 22px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
       position: relative;
       overflow: hidden;
     }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
     .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-      box-shadow: 0 12px 40px rgba(16,185,129,0.15);
+      border-color: rgba(255,255,255,0.15);
+      background: var(--bg-card-hover);
     }
-
-    .project-card:hover::before {
-      opacity: 1;
+    .project-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 10px;
     }
-
     .project-icon {
-      font-size: 40px;
-      margin-bottom: 16px;
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
-
+    .project-meta { flex: 1; min-width: 0; }
     .project-name {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-
+    .project-dates {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+    .project-status.live    { background: rgba(16,185,129,0.15); color: #10b981; }
+    .project-status.active  { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .project-status.done    { background: rgba(100,116,139,0.15); color: #94a3b8; }
+    .project-status.blocked { background: rgba(239,68,68,0.15);  color: #ef4444; }
     .project-desc {
       font-size: 13px;
       color: var(--text-secondary);
-      margin-bottom: 16px;
-      line-height: 1.5;
+      line-height: 1.55;
+      margin-bottom: 12px;
     }
-
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .project-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+    .project-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
     .project-link {
       font-size: 12px;
       color: var(--primary);
+      text-decoration: none;
       display: flex;
       align-items: center;
       gap: 4px;
     }
+    .project-link:hover { text-decoration: underline; }
 
     /* Kanban Board */
     .kanban-header-bar {
@@ -1055,25 +1089,215 @@
           </div>
         </div>
 
+        <!-- Active Projects -->
+        <div class="projects-section-title">🟢 Active</div>
         <div class="projects-grid">
-          <div class="project-card" onclick="openLink('http://localhost:3000')">
-            <div class="project-icon">📝</div>
-            <div class="project-name">Notion Clone</div>
-            <div class="project-desc">Block editor with pages, databases, and AI assistant.</div>
-            <div class="project-link">Open localhost:3000 →</div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">🤖</div>
+              <div class="project-meta">
+                <div class="project-name">Inference Agents</div>
+                <div class="project-dates">Started Mar 2026 · Ongoing</div>
+              </div>
+              <div class="project-status live">● Live</div>
+            </div>
+            <div class="project-desc">UK AI automation agency targeting hospitality businesses. Full autonomous onboarding stack: Stripe → Supabase → Claude → WhatsApp → weekly digests. 50-page website deployed on Cloudflare Pages.</div>
+            <div class="project-tags">
+              <span class="project-tag">Cloudflare</span>
+              <span class="project-tag">Supabase</span>
+              <span class="project-tag">Stripe</span>
+              <span class="project-tag">WhatsApp</span>
+              <span class="project-tag">Claude AI</span>
+              <span class="project-tag">Resend</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://inference-agents.com" target="_blank">🌐 Website →</a>
+              <a class="project-link" href="https://inference-agents.com/mission-control.html" target="_blank">🎛️ Mission Control →</a>
+              <a class="project-link" href="https://dash.cloudflare.com" target="_blank">☁️ Cloudflare →</a>
+              <a class="project-link" href="https://app.supabase.com/project/xksdwchmqgqkjlkfvfwu" target="_blank">🗄️ Supabase →</a>
+            </div>
           </div>
-          <div class="project-card" onclick="openLink('https://app--fresh-track-a9266e05.base44.app')">
-            <div class="project-icon">🥦</div>
-            <div class="project-name">FreshTrack</div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">🎛️</div>
+              <div class="project-meta">
+                <div class="project-name">Mission Control</div>
+                <div class="project-dates">Started Mar 2026 · Ongoing</div>
+              </div>
+              <div class="project-status live">● Live</div>
+            </div>
+            <div class="project-desc">Central hub for tracking projects, tasks, and integrations. Firebase auth, Kanban board, Stripe and HubSpot integrations. Deployed on GitHub Pages.</div>
+            <div class="project-tags">
+              <span class="project-tag">Firebase</span>
+              <span class="project-tag">GitHub Pages</span>
+              <span class="project-tag">localStorage</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://davetheaiagent-netizen.github.io/mission-control/" target="_blank">🌐 Open →</a>
+              <a class="project-link" href="https://github.com/davetheaiagent-netizen/mission-control" target="_blank">📦 GitHub →</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">🥦</div>
+              <div class="project-meta">
+                <div class="project-name">FreshTrack</div>
+                <div class="project-dates">Started 2026 · Ongoing</div>
+              </div>
+              <div class="project-status active">● Active</div>
+            </div>
             <div class="project-desc">AI-powered food waste reduction app.</div>
-            <div class="project-link">Open app →</div>
+            <div class="project-tags">
+              <span class="project-tag">Base44</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://app--fresh-track-a9266e05.base44.app" target="_blank">🌐 Open app →</a>
+            </div>
           </div>
-          <div class="project-card" onclick="openLink('https://inference-agents.com')">
-            <div class="project-icon">🤖</div>
-            <div class="project-name">Inference Agents</div>
-            <div class="project-desc">AI agent platform with local LLMs via Ollama.</div>
-            <div class="project-link">Open site →</div>
+
+        </div>
+
+        <!-- Blocked / Pending -->
+        <div class="projects-section-title">🔴 Blocked</div>
+        <div class="projects-grid">
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">📱</div>
+              <div class="project-meta">
+                <div class="project-name">WhatsApp Business (Real Numbers)</div>
+                <div class="project-dates">Blocked since 28 Mar 2026</div>
+              </div>
+              <div class="project-status blocked">● Blocked</div>
+            </div>
+            <div class="project-desc">Adding real customer WhatsApp Business numbers is blocked pending Meta business verification. Meta verification is blocked pending Companies House registration.</div>
+            <div class="project-tags">
+              <span class="project-tag">Meta</span>
+              <span class="project-tag">WhatsApp</span>
+              <span class="project-tag">Companies House</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://developers.facebook.com/apps" target="_blank">🔗 Meta Developer →</a>
+            </div>
           </div>
+
+        </div>
+
+        <!-- Completed Projects -->
+        <div class="projects-section-title">✅ Completed</div>
+        <div class="projects-grid">
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">🔒</div>
+              <div class="project-meta">
+                <div class="project-name">Security Audit — Inference Agents</div>
+                <div class="project-dates">Completed 28 Mar 2026</div>
+              </div>
+              <div class="project-status done">✓ Done</div>
+            </div>
+            <div class="project-desc">Full security audit of all Cloudflare Functions and client-side code. Fixed: admin auth fallback, open CORS, input validation, prompt injection, HTML escaping in emails, chatbot XSS, rate limiting, hardcoded tokens, stale .env.</div>
+            <div class="project-tags">
+              <span class="project-tag">Security</span>
+              <span class="project-tag">Cloudflare</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">💬</div>
+              <div class="project-meta">
+                <div class="project-name">WhatsApp Meta Cloud API Integration</div>
+                <div class="project-dates">Completed 28 Mar 2026</div>
+              </div>
+              <div class="project-status done">✓ Done</div>
+            </div>
+            <div class="project-desc">Integrated Meta Cloud API for WhatsApp (saving €46/month vs 360Dialog). Facebook Developer app created, webhook configured, messages subscribed, system user and permanent token set up. Tested end-to-end successfully.</div>
+            <div class="project-tags">
+              <span class="project-tag">Meta</span>
+              <span class="project-tag">WhatsApp</span>
+              <span class="project-tag">Claude AI</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://developers.facebook.com/apps" target="_blank">🔗 Meta Developer →</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">⚡</div>
+              <div class="project-meta">
+                <div class="project-name">Cloudflare Functions Automation Stack</div>
+                <div class="project-dates">Completed 28 Mar 2026</div>
+              </div>
+              <div class="project-status done">✓ Done</div>
+            </div>
+            <div class="project-desc">Replaced n8n entirely with Cloudflare Pages Functions at zero cost. Built: stripe-webhook, intake-webhook, change-request, whatsapp, send-digests, go-live, daily-ops, admin, create-checkout, portal, 360dialog-provision.</div>
+            <div class="project-tags">
+              <span class="project-tag">Cloudflare</span>
+              <span class="project-tag">Stripe</span>
+              <span class="project-tag">Supabase</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">🗄️</div>
+              <div class="project-meta">
+                <div class="project-name">Supabase Database Setup</div>
+                <div class="project-dates">Completed 28 Mar 2026</div>
+              </div>
+              <div class="project-status done">✓ Done</div>
+            </div>
+            <div class="project-desc">PostgreSQL schema with 5 tables (customers, agent_configs, conversations, weekly_stats, change_requests), RLS policies, indexes, triggers, and demo data. EU region for GDPR compliance.</div>
+            <div class="project-tags">
+              <span class="project-tag">Supabase</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">GDPR</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://app.supabase.com/project/xksdwchmqgqkjlkfvfwu" target="_blank">🔗 Dashboard →</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">🏨</div>
+              <div class="project-meta">
+                <div class="project-name">Inference Agents Website — Hospitality Pivot</div>
+                <div class="project-dates">Completed 27 Mar 2026</div>
+              </div>
+              <div class="project-status done">✓ Done</div>
+            </div>
+            <div class="project-desc">Pivoted from UK tradespeople to hospitality (hotels, B&Bs, restaurants, pubs). Built 50 HTML pages including sector pages, blog posts, case studies, ROI calculator, onboarding form, customer portal, and change request form.</div>
+            <div class="project-tags">
+              <span class="project-tag">HTML/CSS</span>
+              <span class="project-tag">SEO</span>
+              <span class="project-tag">Cloudflare Pages</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://inference-agents.com" target="_blank">🌐 Website →</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-icon">📝</div>
+              <div class="project-meta">
+                <div class="project-name">Notion Clone</div>
+                <div class="project-dates">Completed 2026</div>
+              </div>
+              <div class="project-status done">✓ Done</div>
+            </div>
+            <div class="project-desc">Block editor with pages, databases, and AI assistant.</div>
+            <div class="project-links">
+              <a class="project-link" href="http://localhost:3000" target="_blank">🌐 Open →</a>
+            </div>
+          </div>
+
         </div>
       </div>
 

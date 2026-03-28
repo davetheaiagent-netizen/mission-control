@@ -1764,19 +1764,24 @@
       if (!localStorage.getItem('mc_kanban')) {
         const sampleData = {
           today: [
-            { title: 'Add Firebase Google OAuth to Inference Agents site', desc: 'Capture user emails via sign-in. Set up authorized domain on GitHub Pages.', priority: 'high', labels: ['feature'], created: 'Today' },
-            { title: 'Define trial structure for Inference Agents', desc: '14-day trial (not 7). Add soft caps: 50 agent runs/day. No credit card required.', priority: 'high', labels: ['feature'], created: 'Today' },
-            { title: 'Design pick-and-mix agent subscription model', desc: 'Base subscription with agent swaps. Add switching costs: context memory, saved outputs.', priority: 'high', labels: ['feature'], created: 'Today' }
+            { id: "t1", title: "Test full payment flow end-to-end", desc: "Make a real Stripe test payment and confirm welcome email arrives, customer appears in Supabase and Mission Control", priority: "high", labels: ["stripe", "testing"], created: "28 Mar 2026" },
+            { id: "t2", title: "Register Inference Agents Ltd at Companies House", desc: "Cost 50 pounds. Required before Meta business verification. Visit find-and-update.company-information.service.gov.uk", priority: "high", labels: ["legal", "meta"], created: "28 Mar 2026" }
           ],
           week: [
-            { title: 'Implement Stripe integration for Inference Agents', desc: 'Set up payments. Consider hybrid model: base fee + usage tail.', priority: 'medium', labels: ['feature'], created: 'Today' },
-            { title: 'Build trial email sequence', desc: 'Day 1: Welcome + onboarding. Day 3: Value check-in. Day 7: Mid-trial nudge. Day 13: Urgency CTA.', priority: 'medium', labels: ['feature'], created: 'Today' },
-            { title: 'Add agent run tracking/limits', desc: 'Track tokens/actions per user. Implement soft caps for free tier to control GPU burn.', priority: 'medium', labels: ['enhancement'], created: 'Today' }
+            { id: "w1", title: "Complete Meta business verification", desc: "Upload Companies House certificate to Meta. Takes 1-3 days after submission. Required to add real customer WhatsApp numbers.", priority: "high", labels: ["whatsapp", "meta"], created: "28 Mar 2026" },
+            { id: "w2", title: "Add real WhatsApp Business number", desc: "After Meta verification approved. Add in Meta Developer then update Supabase agent_configs table.", priority: "medium", labels: ["whatsapp"], created: "28 Mar 2026" },
+            { id: "w3", title: "Get first paying customer", desc: "Direct people to inference-agents.com/pricing.html - full automation stack is live and ready.", priority: "high", labels: ["sales"], created: "28 Mar 2026" }
           ],
           later: [
-            { title: 'Define paid tier features', desc: 'Protect: priority support, team collaboration, API access, custom agent training.', priority: 'low', labels: ['feature'], created: 'Today' },
-            { title: 'Build onboarding flow for Inference Agents', desc: 'Get users to aha moment in <5 minutes. Show value quickly.', priority: 'medium', labels: ['feature'], created: 'Today' },
-            { title: 'Set up analytics for trial conversion', desc: 'Track time-to-activation, drop-off points, conversion metrics.', priority: 'low', labels: ['enhancement'], created: 'Today' }
+            { id: "l1", title: "DONE - Built complete onboarding system", desc: "onboarding.html, portal.html, change-request.html, mission-control.html. Deployed to Cloudflare Pages.", priority: "low", labels: ["done"], created: "27 Mar 2026" },
+            { id: "l2", title: "DONE - Built Cloudflare Functions stack", desc: "stripe-webhook, intake-webhook, whatsapp, admin, daily-ops, send-digests, create-checkout. Replaced n8n at zero cost.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l3", title: "DONE - Supabase database configured", desc: "5 tables: customers, agent_configs, conversations, weekly_stats, change_requests. RLS policies and demo data.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l4", title: "DONE - Resend email configured", desc: "Domain verified. From: hello@inference-agents.com. Sends welcome, go-live, weekly digest emails.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l5", title: "DONE - Stripe payments configured", desc: "Webhook live. 3 products: Starter 99, Growth 199, Full Stack 399. checkout.html rebuilt with Stripe Checkout Sessions.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l6", title: "DONE - Cron jobs set up", desc: "Daily ops 8am UTC and weekly digest Mondays 8am UTC via cron-job.org.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l7", title: "DONE - Security audit and fixes", desc: "Admin auth, CORS, input validation, XSS, rate limiting, prompt injection protection all fixed.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l8", title: "DONE - WhatsApp Meta Cloud API", desc: "Saving 46 euros per month vs 360Dialog. Webhook configured, tested end-to-end successfully.", priority: "low", labels: ["done"], created: "28 Mar 2026" },
+            { id: "l9", title: "DONE - Google Docs documentation written", desc: "Customer Onboarding Process and System Setup Session Log saved to Google Drive.", priority: "low", labels: ["done"], created: "28 Mar 2026" }
           ]
         };
         localStorage.setItem('mc_kanban', JSON.stringify(sampleData));

@@ -991,6 +991,9 @@
         <button class="nav-item" onclick="showView('tools')">
           <span class="icon">⚡</span> Tools
         </button>
+        <button class="nav-item" onclick="showView('team')">
+          <span class="icon">🤖</span> Team
+        </button>
       </nav>
 
       <nav class="nav-section">
@@ -1479,6 +1482,244 @@
           </div>
         </div>
       </div>
+
+      <!-- Team View -->
+      <div id="view-team" class="view">
+        <div class="header">
+          <div class="header-left">
+            <h1>Agent Team</h1>
+            <div class="header-subtitle">Your AI workforce — hybrid cloud + local models</div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 13px;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--primary); display: inline-block; box-shadow: 0 0 6px var(--primary);"></span>
+              <span style="color: var(--text-secondary);">2 active</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 13px;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--info); display: inline-block;"></span>
+              <span style="color: var(--text-secondary);">5 ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cost summary bar -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;">Est. Monthly Cost</div>
+            <div style="font-size: 20px; font-weight: 700; color: var(--primary);">~£5–15</div>
+          </div>
+          <div style="width: 1px; height: 36px; background: var(--border);"></div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;">Cloud Agents</div>
+            <div style="font-size: 20px; font-weight: 700;">3</div>
+          </div>
+          <div style="width: 1px; height: 36px; background: var(--border);"></div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;">Local Agents</div>
+            <div style="font-size: 20px; font-weight: 700;">4</div>
+          </div>
+          <div style="width: 1px; height: 36px; background: var(--border);"></div>
+          <div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;">Orchestrator</div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary);">claude-sonnet-4-6</div>
+          </div>
+        </div>
+
+        <!-- Team grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px;">
+
+          <!-- Dave — CTO -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(139,92,246,0.2)); border: 1px solid var(--border-glow); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🧠</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">Dave</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--primary);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--primary); display: inline-block; box-shadow: 0 0 4px var(--primary);"></span> Active
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">CTO &amp; Orchestrator</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--primary); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">claude-sonnet-4-6</span>
+              <span style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: var(--info); padding: 3px 8px; border-radius: 6px; font-size: 11px;">☁ cloud</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Strategic decisions</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Task orchestration</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Customer architecture</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Agent coordination</span>
+            </div>
+          </div>
+
+          <!-- Chief of Staff -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--primary);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(16,185,129,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📋</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">Chief of Staff</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--primary);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--primary); display: inline-block; box-shadow: 0 0 4px var(--primary);"></span> Active
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Task Router &amp; Planner</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--primary); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">claude-haiku-4-5</span>
+              <span style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: var(--info); padding: 3px 8px; border-radius: 6px; font-size: 11px;">☁ cloud</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Task routing</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Priority management</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Daily briefings</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Delegation</span>
+            </div>
+          </div>
+
+          <!-- Codex -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(139,92,246,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">💻</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">Codex</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--info);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--info); display: inline-block;"></span> Ready
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Coding Agent</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); color: var(--accent); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">qwen2.5:7b-instruct</span>
+              <span style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: var(--warning); padding: 3px 8px; border-radius: 6px; font-size: 11px;">⚡ local</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Build apps &amp; scripts</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">API integrations</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Bug fixes</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Code reviews</span>
+            </div>
+          </div>
+
+          <!-- TrendRadar -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--info);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(59,130,246,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📡</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">TrendRadar</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--info);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--info); display: inline-block;"></span> Ready
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Research Agent</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); color: var(--accent); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">qwen3:8b</span>
+              <span style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: var(--warning); padding: 3px 8px; border-radius: 6px; font-size: 11px;">⚡ local</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Market research</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Trend monitoring</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Competitor analysis</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">News gathering</span>
+            </div>
+          </div>
+
+          <!-- DataWhisperer -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--info);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(59,130,246,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📊</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">DataWhisperer</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--info);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--info); display: inline-block;"></span> Ready
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Data Analyst</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); color: var(--accent); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">qwen3:8b</span>
+              <span style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: var(--warning); padding: 3px 8px; border-radius: 6px; font-size: 11px;">⚡ local</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Analytics reports</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Revenue metrics</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Customer insights</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Performance tracking</span>
+            </div>
+          </div>
+
+          <!-- SocialBoss -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #ec4899;"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(236,72,153,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📣</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">SocialBoss</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--info);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--info); display: inline-block;"></span> Ready
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Content &amp; Social</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--primary); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">claude-haiku-4-5</span>
+              <span style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: var(--info); padding: 3px 8px; border-radius: 6px; font-size: 11px;">☁ cloud</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Social media posts</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Copy writing</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Email campaigns</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Content calendar</span>
+            </div>
+          </div>
+
+          <!-- PixelArtist -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--warning);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(245,158,11,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🎨</div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                  <div style="font-size: 16px; font-weight: 700;">PixelArtist</div>
+                  <div style="display: flex; align-items: center; gap: 4px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--info);">
+                    <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--info); display: inline-block;"></span> Ready
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary);">Visual Designer</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+              <span style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); color: var(--accent); padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500;">qwen3:8b</span>
+              <span style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: var(--warning); padding: 3px 8px; border-radius: 6px; font-size: 11px;">⚡ local</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Design briefs</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Brand guidelines</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Visual concepts</span>
+              <span style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text-secondary);">Asset specs</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </main>
   </div>
 
